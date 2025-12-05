@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <title>Item Lister</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+            }
+            header {
+                background: linear-gradient(135deg, #2ecc71, #27ae60);
+                color: white;
+            }
+            .row {
+                display: flex;
+                gap: 1rem;
+                max-width: 1000px;
+                margin-inline: auto;
+                padding: 2rem;
+                justify-content: space-between;
+            }
+            header input {
+                flex: 0.5;
+                padding: 1rem;
+            }
+            header h1 {
+                font-size: 3rem;
+                font-weight: 300;
+                letter-spacing: 1px;
+            }
+
+            .container {
+                max-width: 1000px;
+                margin-inline: auto;
+                padding: 3rem;
+                background-color: #fff;
+                border-radius: 0.5rem;
+                margin-top: 3rem;
+
+                border: 1px solid #ccc;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                color: #333;
+                font-weight: 400;
+            }
+            .add-items {
+                margin-bottom: 2rem;
+            }
+            .input-group {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+            input[type="text"] {
+                flex:1;
+                padding: 12px 1rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                outline: none
+            }
+            input[type="text"]:focus {
+                border-color: #2ecc71;
+            }
+            button,
+            input[type="submit"] {
+                padding: 12px 30px;
+                background-color: #555;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #333;
+            }
+            .item-section h2 {
+                margin-bottom: 1rem;
+            }
+            ul {
+                list-style: none;
+            }
+            li {
+                padding: 1rem;
+                color: #666;
+                font-size: 16px;
+            }
+            li:hover {
+                background-color: #f0f0f0;
+            }
+            .list-row {
+                display: flex;
+                flex: 1;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                border: 1px solid #e0e0e0;
+                border-radius: 4px;
+                background-color: #f9f9f9;
+            }
+            .del-btn {
+                background-color: red;
+                padding: 6px;
+                align-self: center;
+            }
+            .del-btn:hover{
+                background-color: rgba(222, 6, 6, 0.913);
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="row">
+                <h1 class="header-container">Item Lister</h1>
+                <input id="filter" value="" placeholder="Search items...">
+            </div>
+        </header>
+         
+        <div class="container">
+            <div class="add-items">
+                <h2>Add Items</h2>
+                <form class="input-group">
+                    <input type="text" id="itemInput" placeholder="Enter item....." >
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            
+            <div class="items-section">
+                <h2>Items</h2>
+
+                <ul id="itemList">
+                    <li class="list-row">
+                        Item 1
+                        <button class="del-btn">X</button>
+                    </li>
+                    <li class="list-row">
+                        Item 2
+                        <button class="del-btn">X</button>
+                    </li>
+                    <li class="list-row">
+                        Item 3
+                        <button class="del-btn">X</button>
+                    </li>
+                    <li class="list-row">
+                        Item 4
+                        <button class="del-btn">X</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            const itemList = document.getElementById('itemList');
+            const filterBtn = document.getElementById('filter');
+            function addItem(e) {
+                e.preventDefault();
+                const input = document.getElementById('itemInput');
+                const itemText = input.value.trim();
+
+                if (itemText === '') {
+                    alert('Please enter an item');
+                    return;
+                }
+
+                const ul = document.getElementById('itemList');
+
+                //create li element
+                const li = document.createElement('li');
+                li.className = "list-row"
+                li.textContent = itemText;
+
+                // create delete button
+                const delBtn = document.createElement('button');
+                delBtn.className = "del-btn"
+                delBtn.textContent = "X"
+
+                // append delBtn inside li
+                li.appendChild(delBtn)
+
+
+                // append to ul
+                ul.appendChild(li);
+
+                input.value = "";
+                input.focus();
+            }
+
+            function removeItem(e) {
+                if (e.target.classList.contains('del-btn')) {
+                    if (confirm("Are you sure?")) {
+                        var li = e.target.parentElement;
+                        console.log(li)
+                        itemList.removeChild(li)
+                    }
+                }
+            }
+
+            function filterItem(e) {
+                    // convert text to lowercase
+                    var filterText = e.target.value.toLowerCase();
+                    
+                    var items = itemList.getElementsByTagName('li')
+                    Array.from(items).forEach((item) => {
+                        var itemName = item.firstChild.textContent
+                        if (itemName.toLowerCase().indexOf(filterText) != -1) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none'
+                        }
+                    })   
+            }
+
+            document.querySelector('.input-group')
+            .addEventListener('submit', addItem)
+
+            // Allow Enter key to submit
+            document.getElementById('itemInput')
+            .addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addItem();
+                }
+            })
+            itemList.addEventListener('click', removeItem)
+            filterBtn.addEventListener('keyup', filterItem)
+        </script>
+    </body>
+</html>
