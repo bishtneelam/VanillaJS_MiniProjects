@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1.25rem;
+    background-color: #eee;
+    padding: 2rem;
+    box-shadow: rbga(0,0,0,.4);
+}
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #333;
+    padding: 1.5rem;
+}
+form {
+    width:min(600px, 100%);
+    margin-inline: auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    display: grid;
+    gap: 1.2rem;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: .6rem;
+    border-radius: 0.5rem;
+    border: 2px solid #aaa;
+}
+input:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
+button {
+    padding: .8rem;
+    border-radius: .5rem;
+    border: none;
+    background-color: dodgerblue;
+    color: #fff;
+    font-weight: bold;
+}
+
+.error {
+    color: crimson;
+    font-size: .9rem;
+    display: none;
+}
+.form-control label {
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+input[type="checkbox"] {
+  width:18px;
+  height:18px;
+  accent-color:dodgerblue;
+}
+.gender-group label {
+    display: flex;
+    align-items: center;
+    gap:.5rem;
+}
+input[type="radio"] {
+  width:18px;
+  height:18px;
+  accent-color:dodgerblue;    
+}

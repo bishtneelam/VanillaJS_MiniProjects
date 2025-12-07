@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <title>Form</title>
+    </head>
+    <body>
+        <h2>Registartion Form</h2>
+        <form id="signUpForm">
+            <div>
+                <label for="name">Full Name:</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    minlength="3"
+                    required>
+                <p class="error" id="nameErr">Name must be atleast 3 characters.</p>
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    required>
+                <p class="error" id="emailErr">Enter a valid email</p>
+            </div>
+
+            <div>
+                <label for="pwd">Password:</label>
+                <input 
+                    type="password" 
+                    id="pwd" 
+                    minlength="6" 
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*+=]).{6,}"
+                    required>
+                <p class="error" id="pwdErr">Password must be atleast 6 characters and must include lowercase, uppercase, digits and special character</p>
+            </div>
+
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" min="18" max="60" required>
+                <p class="error" id="ageErr">Age must be between 18 and 60</p>
+            </div>
+                
+            <div>
+                <label>Gender:</label>
+                <div class="gender-group">
+                    <label class="radio">
+                        <input type="radio" name="gender" value="male" required>
+                        <span>Male</span>
+                    </label>
+                </div>
+                <div class="gender-group">
+                    <label class="radio">
+                        <input type="radio" name="gender" value="female" required>
+                        <span>Female</span>
+                    </label>
+                </div>
+                <div class="gender-group">
+                    <label class="radio">
+                        <input type="radio" name="gender" value="others" required>
+                        <span>Others</span>
+                    </label>
+                </div>
+                <p class="error" id="genderErr">Please select gender</p>
+            </div>
+
+           <div class="form-control">
+                <label>
+                    <input type="checkbox" id="terms" required>
+                    <span>Agree to terms and conditions</span>
+                </label>
+            </div>
+
+            <div>
+                <label for="state">Select State:</label>
+                <select>
+                    <option value="">Select</option>
+                    <option value="">Uttarakhand</option>
+                    <option value="">Maharashtra</option>
+                    <option value="">Goa</option>
+                    <option value="">Punjab</option>
+                    <option value="">Gujarat</option>
+                    <option value="">Himachal Pradesh</option>
+                    <option value="">Kashmir</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="msg">Message:</label>
+                <textarea id="msg" rows="4"></textarea>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+        <script src="index.js"></script>
+    </body>
+</html>
