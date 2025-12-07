@@ -1,0 +1,17 @@
+/* darken background */
+/* centered modal */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.modal {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 400px;
+}
