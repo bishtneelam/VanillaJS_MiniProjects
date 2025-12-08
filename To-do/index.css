@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    background-color: #fff;
+}
+.todoApp {
+    border: 1px solid #ddd;
+    width: 400px;
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: rgba(0,0,0,.4);
+}
+h2 {
+    margin-bottom: 1rem;
+}
+form {
+    display: flex;
+    gap: 1rem;
+}
+form input {
+    width: 90%;
+    padding: .3rem;
+}
+
+form button {
+    border: none;
+    background-color: dodgerblue;
+    color: white;
+    font-weight: bold;
+    padding: .5rem;
+    align-self: stretch;
+}
+ul {
+    list-style: none;
+    padding-top: 2rem;
+}
+li {
+    display: flex;
+    gap: .5rem;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: .5rem;
+    padding: .8rem;
+    background-color: #eee;
+    margin-bottom: 1rem;
+}
+li:last-child {
+    margin-bottom: none;
+}
+button {
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: .4rem;
+}

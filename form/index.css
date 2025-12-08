@@ -48,6 +48,7 @@ button {
     background-color: dodgerblue;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .error {

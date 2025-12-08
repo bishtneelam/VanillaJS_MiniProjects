@@ -23,9 +23,9 @@ function onSubmit(e) {
 
     if (!email.value.includes('@')) {
         emailErr.style.display = "block";
+        valid = false;
     } else {
         emailErr.style.display = "none";
-        valid = false;
     }
 
     if (password.value.length < 6) {
@@ -45,6 +45,12 @@ function onSubmit(e) {
     if (valid) {
         if (confirm("Are you sure?")) {
             alert("Form submitted successfully")
+            form.reset();
+            nameErr.style.display = "none";
+            emailErr.style.display = "none";
+            pwdErr.style.display = "none";
+            ageErr.style.display = "none";
+            valid=true;
         }
     }
 }
